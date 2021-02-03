@@ -16,8 +16,6 @@
 const NSAutoresizingMaskOptions kDefaultAutoResizingMask =
     NSViewMaxXMargin | NSViewMinYMargin;
 
-const IN_DEBUG_MODE = getenv("ELECTRON_DEBUG_DRAG_REGIONS");
-
 @interface DragRegionView : NSView
 
 @property(assign) NSPoint initialLocation;
@@ -135,13 +133,14 @@ const IN_DEBUG_MODE = getenv("ELECTRON_DEBUG_DRAG_REGIONS");
   [self.window setFrameOrigin:newOrigin];
 }
 
-// For debugging purposes only.
-- (void)drawRect:(NSRect)aRect {
-  if (IN_DEBUG_MODE) {
-    [[[NSColor greenColor] colorWithAlphaComponent:0.5] set];
-    NSRectFill([self bounds]);
-  }
-}
+// For debugging purposes only. Do not uncomment as rendering
+// will be impacted and cause flickers.
+// - (void)drawRect:(NSRect)aRect {
+//   if (IN_DEBUG_MODE) {
+//     [[[NSColor greenColor] colorWithAlphaComponent:0.5] set];
+//     NSRectFill([self bounds]);
+//   }
+// }
 
 @end
 
@@ -154,13 +153,14 @@ const IN_DEBUG_MODE = getenv("ELECTRON_DEBUG_DRAG_REGIONS");
   return NO;
 }
 
-// For debugging purposes only.
-- (void)drawRect:(NSRect)aRect {
-  if (IN_DEBUG_MODE) {
-    [[[NSColor redColor] colorWithAlphaComponent:0.5] set];
-    NSRectFill([self bounds]);
-  }
-}
+// For debugging purposes only. Do not uncomment as rendering
+// will be impacted and cause flickers.
+// - (void)drawRect:(NSRect)aRect {
+//   if (IN_DEBUG_MODE) {
+//     [[[NSColor redColor] colorWithAlphaComponent:0.5] set];
+//     NSRectFill([self bounds]);
+//   }
+// }
 
 @end
 
